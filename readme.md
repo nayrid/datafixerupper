@@ -21,13 +21,13 @@ maven {
 And then use this library (change `(the latest version)` to the latest version):
 
 ```kotlin
-compile("com.nayri.serialize:serialize-api:(the latest version)")
+compile("com.nayrid.serialize:serialize-api:(the latest version)")
 
 // if you want JsonOps:
-compile("com.nayri.serialize:serialize-ops-json:(the latest version)")
+compile("com.nayrid.serialize:serialize-ops-json:(the latest version)")
 
 // or NbtOps:
-compile("com.nayri.serialize:serialize-ops-nbt:(the latest version)")
+compile("com.nayrid.serialize:serialize-ops-nbt:(the latest version)")
 ```
 
 <details>
