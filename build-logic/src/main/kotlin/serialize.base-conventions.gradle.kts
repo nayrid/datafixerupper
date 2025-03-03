@@ -119,7 +119,7 @@ publishing {
         }
         maven {
             name = "nayridReleases"
-            url = uri("https://repo.kokirigla.de/releases")
+            url = uri("https://repo.nayrid.com/releases")
             credentials {
                 username = project.findProperty("nayridUsername") as String?
                     ?: System.getenv("MAVEN_NAME")
