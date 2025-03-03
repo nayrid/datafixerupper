@@ -114,7 +114,7 @@ publishing {
                 username = project.findProperty("kokirigladeUsername") as String?
                     ?: System.getenv("MAVEN_NAME")
                 password = project.findProperty("kokirigladePassword") as String?
-                    ?: System.getenv("MAVEN_SECRET")
+                    ?: System.getenv("MAVEN_TOKEN")
             }
         }
         maven {
@@ -124,7 +124,7 @@ publishing {
                 username = project.findProperty("kokirigladeUsername") as String?
                     ?: System.getenv("MAVEN_NAME")
                 password = project.findProperty("kokirigladePassword") as String?
-                    ?: System.getenv("MAVEN_SECRET")
+                    ?: System.getenv("MAVEN_TOKEN")
             }
         }
     }
