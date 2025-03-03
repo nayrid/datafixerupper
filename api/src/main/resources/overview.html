@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Overview</title>
+</head>
+<body>
+<p>
+    Data Fixer Upper (or DFU for short) is a library for creating transformations between structures, regardless of the
+    specific schemas or storage formats the structures use. Users of DFU will generally use two sets of types:
+    the serialization types and the data fix types. An overview of the relevant packages is given below, but see the
+    documentation of those packages and types for more details.
+</p>
+<ul>
+    <li>
+        <strong>Serialization:</strong>These types are located in the {@link com.mojang.serialization} package,
+        and provide a way to define a transformation of objects of some type to and from an arbitrary hierarchical
+        serialized form.
+    </li>
+    <li>
+        <strong>Data fixing:</strong>These types are located in the {@link com.mojang.datafixers} package,
+        and provide a way to map the value or format of part of a structure to another value or format. This is
+        achieved using optics.
+    </li>
+</ul>
+<p>
+    Users typically will not need to use the types in the remaining packages, but they are still shown here for
+    convenience (or masochism).
+</p>
+<h2>Contribute</h2>
+<p>
+    DataFixerUpper is Open Source by Mojang Studios/Microsoft Corporation and is licensed under the MIT license.
+    This documentation is maintained separately by third parties, and is also licensed permissively.
+</p>
+<ul>
+    <li><a href="https://github.com/Mojang/DataFixerUpper">DataFixerUpper repository</a></li>
+    <li><a href="https://github.com/kvverti/Documented-DataFixerUpper">Documentation repository</a></li>
+    <li><a href="https://github.com/nayrid/serialize">Nayrid DFU distribution repository</a></li>
+</ul>
+
+@see com.mojang.datafixers.DSL
+@see com.mojang.serialization.Codec
+@see com.mojang.datafixers
+@see com.mojang.serialization
+</body>
+</html>

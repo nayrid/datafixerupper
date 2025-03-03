@@ -1,0 +1,36 @@
+[versions]
+net-kyori-indra = "3.1.3"
+com-gradleup-shadow = "9.0.0-beta7"
+
+ca-stellardrift-stylecheck = "0.2.1"
+org-jspecify = "1.0.0"
+org-jetbrains-annotations = "26.0.2"
+
+org-junit = "5.11.4"
+com-google-guava-guava = "32.1.2-jre"
+com-google-code-gson = "2.10.1"
+it-unimi-dsi-fastutil = "8.5.12"
+org-slf4j-sl4fj = "2.0.9"
+net-kyori-adventure = "4.19.0"
+
+[libraries]
+# build logic
+indra-common = { group = "net.kyori", name = "indra-common", version.ref = "net-kyori-indra" }
+indra-licenseHeader = { group = "net.kyori", name = "indra-licenser-spotless", version.ref = "net-kyori-indra" }
+indra-crossdoc = { group = "net.kyori", name = "indra-crossdoc", version.ref = "net-kyori-indra" }
+shadow = { group = "com.gradleup.shadow", name = "shadow-gradle-plugin", version.ref = "com-gradleup-shadow" }
+
+# development tools (code quality, annotations)
+stylecheck = { group = "ca.stellardrift", name = "stylecheck", version.ref = "ca-stellardrift-stylecheck" }
+junit-jupiterApi = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "org-junit" }
+junit-jupiterEngine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "org-junit" }
+jspecify = { group = "org.jspecify", name = "jspecify", version.ref = "org-jspecify" }
+jetbrains-annotations = { group = "org.jetbrains", name = "annotations", version.ref = "org-jetbrains-annotations" }
+
+# libraries
+guava = { group = "com.google.guava", name = "guava", version.ref = "com-google-guava-guava" }
+fastutil = { group = "it.unimi.dsi", name = "fastutil", version.ref = "it-unimi-dsi-fastutil" }
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "org-slf4j-sl4fj" }
+slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "org-slf4j-sl4fj" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "com-google-code-gson" }
+nbt = { group = "net.kyori", name = "adventure-nbt", version.ref = "net-kyori-adventure" }
