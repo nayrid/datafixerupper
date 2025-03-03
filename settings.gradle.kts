@@ -18,13 +18,13 @@ plugins {
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-rootProject.name = "serialize-parent"
+rootProject.name = "serialize"
 
 sequenceOf(
     "api",
     "ops-json",
     "ops-nbt"
 ).forEach {
-    include("serialize-$it")
-    project(":serialize-$it").projectDir = file(it)
+    include("${rootProject.name}-$it")
+    project(":${rootProject.name}-$it").projectDir = file(it)
 }

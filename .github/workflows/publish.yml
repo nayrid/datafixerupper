@@ -1,0 +1,12 @@
+name: "build"
+
+on:
+    push:
+        branches: ["trunk"]
+        tags-ignore: ["**"]
+    pull_request:
+
+jobs:
+    call-build:
+        uses: "nayrid/.github/.github/workflows/shared-publish.yaml@trunk"
+        secrets: "inherit"

@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-    api(project(":serialize-api"))
+    api(project(":${rootProject.name}-api"))
     api(libs.gson)
 }

@@ -4,6 +4,7 @@ plugins {
     `java-library`
     idea
     id("net.kyori.indra")
+    id("net.kyori.indra.crossdoc")
     id("net.kyori.indra.checkstyle")
     id("net.kyori.indra.licenser.spotless")
     `maven-publish`
@@ -14,6 +15,15 @@ indra {
 
     javaVersions {
         target(21)
+    }
+}
+
+val isSnapshot = (rootProject.version as String).contains(("SNAPSHOT"))
+
+indraCrossdoc {
+    baseUrl().set(providers.gradleProperty("javadocPublishRoot").get().replace("%REPO%", if(isSnapshot) "snapshots" else "releases"))
+    nameBasedDocumentationUrlProvider {
+        version = (project.version as String) + "/raw"
     }
 }
 
@@ -57,20 +67,24 @@ idea {
     }
 }
 
-val isSnapshot = (rootProject.version as String).contains(("SNAPSHOT"))
-
 tasks {
     javadoc {
         (options as StandardJavadocDocletOptions).apply {
             isFailOnError = false
             links(
+                // base
                 "https://jspecify.dev/docs/api/",
                 "https://javadoc.io/doc/org.jetbrains/annotations/26.0.2/",
-                "https://javadoc.io/doc/com.google.code.findbugs/jsr305/3.0.2/",
-                "https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.0/",
-                "https://www.slf4j.org/apidocs/",
+
+                // api
                 "https://guava.dev/releases/21.0/api/docs/",
-                "https://commons.apache.org/proper/commons-lang/javadocs/api-3.5/"
+                "https://www.slf4j.org/apidocs/",
+
+                // ops-json
+                "https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.0/",
+
+                // ops-nbt
+                "https://jd.advntr.dev/nbt/4.19.0/"
             )
             tags(
                 "apiNote:a:API Note:",
@@ -94,8 +108,18 @@ tasks {
 publishing {
     repositories {
         maven {
-            name = "kokirigladeNayrid"
-            url = uri("https://repo.kokirigla.de/nayrid")
+            name = "kokirigladeSnapshots"
+            url = uri("https://repo.kokirigla.de/snapshots")
+            credentials {
+                username = project.findProperty("kokirigladeUsername") as String?
+                    ?: System.getenv("MAVEN_NAME")
+                password = project.findProperty("kokirigladePassword") as String?
+                    ?: System.getenv("MAVEN_SECRET")
+            }
+        }
+        maven {
+            name = "kokirigladeReleases"
+            url = uri("https://repo.kokirigla.de/releases")
             credentials {
                 username = project.findProperty("kokirigladeUsername") as String?
                     ?: System.getenv("MAVEN_NAME")
