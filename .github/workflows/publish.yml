@@ -9,6 +9,4 @@ on:
 jobs:
     call-publish:
         uses: "nayrid/.github/.github/workflows/shared-publish.yaml@trunk"
-        secrets:
-            MAVEN_NAME: ${{ secrets.MAVEN_NAME }}
-            MAVEN_TOKEN: ${{ secrets.MAVEN_TOKEN }}
+        secrets: inherit
