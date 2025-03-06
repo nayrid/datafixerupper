@@ -46,6 +46,7 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 import net.kyori.adventure.nbt.BinaryTag;
+import net.kyori.adventure.nbt.BinaryTagType;
 import net.kyori.adventure.nbt.BinaryTagTypes;
 import net.kyori.adventure.nbt.ByteArrayBinaryTag;
 import net.kyori.adventure.nbt.ByteBinaryTag;
@@ -487,7 +488,9 @@ public final class NbtOps implements DynamicOps<BinaryTag> {
         }
 
         HeterogenousListCollector(final ListBinaryTag listTag) {
-            result.add(listTag.stream().toList());
+            for (final BinaryTag binaryTag : listTag) {
+                result.add(binaryTag);
+            }
         }
 
         HeterogenousListCollector(final IntArrayList intArrayList) {
@@ -537,20 +540,30 @@ public final class NbtOps implements DynamicOps<BinaryTag> {
     @SuppressWarnings("unused")
     static class HomogenousListCollector implements ListCollector {
 
-        private final ListBinaryTag result = ListBinaryTag.builder().build();
+        private final ListBinaryTag.Builder<BinaryTag> result;
+        private final BinaryTagType<?> elementType;
 
         HomogenousListCollector(final BinaryTag tag) {
-            result.add(tag);
+            elementType = tag.type();
+            result = ListBinaryTag.builder().add(tag);
         }
 
         HomogenousListCollector(final ListBinaryTag listTag) {
-            result.add(listTag.stream().toList());
+            elementType = listTag.elementType();
+
+            final ListBinaryTag.Builder<BinaryTag> builder = ListBinaryTag.builder();
+
+            for (final BinaryTag binaryTag : listTag) {
+                builder.add(binaryTag);
+            }
+
+            result = builder;
         }
 
         @Override
         public ListCollector accept(final BinaryTag tag) {
-            if (tag.type().id() != result.elementType().id()) {
-                return new HeterogenousListCollector().acceptAll(result).accept(tag);
+            if (tag.type().id() != elementType.id()) {
+                return new HeterogenousListCollector().acceptAll(result.build()).accept(tag);
             } else {
                 result.add(tag);
                 return this;
@@ -559,7 +572,7 @@ public final class NbtOps implements DynamicOps<BinaryTag> {
 
         @Override
         public BinaryTag result() {
-            return result;
+            return result.build();
         }
 
     }
