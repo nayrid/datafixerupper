@@ -482,7 +482,7 @@ public final class NbtOps implements DynamicOps<BinaryTag> {
     @SuppressWarnings("unused")
     static class HeterogenousListCollector implements ListCollector {
 
-        private final ListBinaryTag result = ListBinaryTag.builder().build();
+        private final ListBinaryTag.Builder<BinaryTag> result = ListBinaryTag.builder();
 
         HeterogenousListCollector() {
         }
@@ -532,7 +532,7 @@ public final class NbtOps implements DynamicOps<BinaryTag> {
 
         @Override
         public BinaryTag result() {
-            return result;
+            return result.build();
         }
 
     }

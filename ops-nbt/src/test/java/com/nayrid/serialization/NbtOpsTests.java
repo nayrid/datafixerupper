@@ -49,7 +49,11 @@ public class NbtOpsTests {
         "Hello World!",
         Map.of("Hello", 1),
         List.of(Math.PI, Math.E),
-        List.of("Hello", "World")
+        List.of("Hello", "World"),
+        List.of(
+            new TestListedCompound(6, 9),
+            new TestListedCompound(4, 2)
+        )
     );
 
     @Test
@@ -72,7 +76,8 @@ public class NbtOpsTests {
         String stringValue,
         Map<String, Integer> stringIntegerMapValue,
         List<Double> listOfDoublesValue,
-        List<String> listOfStringsValue
+        List<String> listOfStringsValue,
+        List<TestListedCompound> listOfCompounds
     ) {
 
         public static final Codec<TestRecord> CODEC = RecordCodecBuilder.create(instance -> instance.group(
@@ -86,8 +91,18 @@ public class NbtOpsTests {
             Codec.STRING.fieldOf("string").forGetter(TestRecord::stringValue),
             Codec.unboundedMap(Codec.STRING, Codec.INT).fieldOf("map").forGetter(TestRecord::stringIntegerMapValue),
             Codec.DOUBLE.listOf().fieldOf("double_list").forGetter(TestRecord::listOfDoublesValue),
-            Codec.STRING.listOf().fieldOf("string_list").forGetter(TestRecord::listOfStringsValue)
+            Codec.STRING.listOf().fieldOf("string_list").forGetter(TestRecord::listOfStringsValue),
+            TestListedCompound.CODEC.listOf().fieldOf("compounds").forGetter(TestRecord::listOfCompounds)
         ).apply(instance, TestRecord::new));
+
+    }
+
+    record TestListedCompound(int x, int y) {
+
+        public static final Codec<TestListedCompound> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            Codec.INT.fieldOf("x").forGetter(TestListedCompound::x),
+            Codec.INT.fieldOf("y").forGetter(TestListedCompound::y)
+        ).apply(instance, TestListedCompound::new));
 
     }
 
