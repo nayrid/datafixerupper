@@ -1,0 +1,13 @@
+name: "run checks"
+
+on:
+  push:
+    branches: ["**"]
+    tags-ignore: ["**"]
+  pull_request:
+
+jobs:
+  call-checks:
+    uses: "nayrid/.github/.github/workflows/shared-checks.yaml@trunk"
+    secrets: "inherit"
+
