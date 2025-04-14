@@ -1,10 +1,13 @@
 # serialize
 
-**serialize** is a soft fork of [Mojang's DataFixerUpper](https://github.com/Mojang/DataFixerUpper),
+**serialize** is a "soft fork" of [Mojang's DataFixerUpper](https://github.com/Mojang/DataFixerUpper),
 maintaining full API compatibility while incorporating improvements in documentation and modularity.
+
+In most cases this and Mojang's distribution of DataFixerUpper should be completely interchangeable (unless you're using `JsonOps`, see below).
 
 - `JsonOps` has been moved to its own module
 - `NbtOps` included, using [adventure-nbt](https://github.com/KyoriPowered/adventure/tree/main/4/nbt)
+ - Not recommended for long-term usage; adventure are [working on their own DynamicOps implementation](https://github.com/KyoriPowered/adventure/pull/1191/) that will definitely be better than ours
 - Integrated documentation
   from [Documented DataFixerUpper](https://github.com/kvverti/Documented-DataFixerUpper/)
 

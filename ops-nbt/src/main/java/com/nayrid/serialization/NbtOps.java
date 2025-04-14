@@ -69,6 +69,7 @@ import org.jspecify.annotations.Nullable;
  * {@link BinaryTag NBT} {@link DynamicOps}.
  */
 @NullMarked
+@Deprecated(since = "1.0.0", forRemoval = true)
 public final class NbtOps implements DynamicOps<BinaryTag> {
 
     public static final NbtOps INSTANCE = new NbtOps();
