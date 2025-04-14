@@ -5,6 +5,8 @@ on:
         branches: ["trunk"]
         tags-ignore: ["**"]
     pull_request:
+    release:
+      types: [published]
 
 jobs:
     call-publish:
