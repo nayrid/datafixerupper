@@ -20,13 +20,13 @@ maven {
 And then use this library (change `(the latest version)` to the latest version):
 
 ```kotlin
-compile("com.nayrid:datafixerupper-api:(the latest version)")
+implementation("com.nayrid:datafixerupper-api:(the latest version)")
 
 // if you want JsonOps:
-compile("com.nayrid:datafixerupper-ops-json:(the latest version)")
+implementation("com.nayrid:datafixerupper-ops-json:(the latest version)")
 
 // or NbtOps:
-compile("com.nayrid:datafixerupper-ops-nbt:(the latest version)")
+implementation("com.nayrid:datafixerupper-ops-nbt:(the latest version)")
 ```
 
 <details>
