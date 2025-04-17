@@ -130,7 +130,7 @@ publishing {
     }
     publications {
         create<MavenPublication>("maven") {
-            groupId = rootProject.group as String + "." + rootProject.name
+            groupId = rootProject.group as String
             version = rootProject.version as String
             from(components["java"])
         }

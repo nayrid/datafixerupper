@@ -1,15 +1,11 @@
-# serialize
+# datafixerupper
 
-**serialize** is a "soft fork" of [Mojang's DataFixerUpper](https://github.com/Mojang/DataFixerUpper),
-maintaining full API compatibility while incorporating improvements in documentation and modularity.
+A redistribution of [Mojang's DataFixerUpper](https://github.com/Mojang/DataFixerUpper).
 
-In most cases this and Mojang's distribution of DataFixerUpper should be completely interchangeable (unless you're using `JsonOps`, see below).
+This is just a fork that includes [Documented DataFixerUpper](https://github.com/kvverti/Documented-DataFixerUpper) and splits `JsonOps` into its own module.
 
-- `JsonOps` has been moved to its own module
 - `NbtOps` included, using [adventure-nbt](https://github.com/KyoriPowered/adventure/tree/main/4/nbt)
   - Not recommended for long-term usage; adventure are [working on their own DynamicOps implementation](https://github.com/KyoriPowered/adventure/pull/1191/) that will definitely be better than ours
-- Integrated documentation
-  from [Documented DataFixerUpper](https://github.com/kvverti/Documented-DataFixerUpper/)
 
 ## Gradle
 
@@ -24,13 +20,13 @@ maven {
 And then use this library (change `(the latest version)` to the latest version):
 
 ```kotlin
-compile("com.nayrid.serialize:serialize-api:(the latest version)")
+compile("com.nayrid:datafixerupper-api:(the latest version)")
 
 // if you want JsonOps:
-compile("com.nayrid.serialize:serialize-ops-json:(the latest version)")
+compile("com.nayrid:datafixerupper-ops-json:(the latest version)")
 
 // or NbtOps:
-compile("com.nayrid.serialize:serialize-ops-nbt:(the latest version)")
+compile("com.nayrid:datafixerupper-ops-nbt:(the latest version)")
 ```
 
 <details>

@@ -18,7 +18,7 @@ plugins {
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-rootProject.name = "serialize"
+rootProject.name = "datafixerupper"
 
 sequenceOf(
     "api",
